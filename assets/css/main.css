@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Nova+Cut|Rammetto+One');
+
+#tabla , tr, td{
+	display: inline-block;
+}
+#tabla, #container-tabla{
+ display: inline-block;
+ width: 73%;
+}
+
+td{
+	width: 130px;
+	height: 130px;
+	margin: 0 20px;
+}
+ img {
+	position: absolute;
+	z-index: 71;
+}
+
+.oculto{
+	display: none;
+}
+
+#container-tabla{
+	padding-top: 100px;
+	padding-left: 250px;
+}
+
+.main{
+	text-align: center;
+	background: salmon;
+	width: 100%;
+	height: 30%;
+	font-family: 'Rammetto One', cursive;
+	font-size: 1.7em;
+	box-shadow: 5px 5px 5px maroon;
+}
+
+section{
+	display: flex;
+	justify-content: center;
+	margin: 20px;
+}
+
+body{
+	background-image: url("../img/free.jpg");
+	background-size: cover;
+}
+
+.mostrar{
+	display: inline;
+}
