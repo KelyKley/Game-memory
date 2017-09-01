@@ -1,31 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Nova+Cut|Rammetto+One');
 
-#tabla , tr, td{
-	display: inline-block;
-}
-#tabla, #container-tabla{
- display: inline-block;
- width: 73%;
-}
-
-td{
-	width: 130px;
-	height: 130px;
-	margin: 0 20px;
-}
- img {
-	position: absolute;
-	z-index: 71;
-}
-
-.oculto{
-	display: none;
-}
-
-#container-tabla{
-	padding-top: 100px;
-	padding-left: 250px;
-}
 
 .main{
 	text-align: center;
@@ -35,6 +9,7 @@ td{
 	font-family: 'Rammetto One', cursive;
 	font-size: 1.7em;
 	box-shadow: 5px 5px 5px maroon;
+	color: white;
 }
 
 section{
@@ -43,11 +18,55 @@ section{
 	margin: 20px;
 }
 
-body{
-	background-image: url("../img/free.jpg");
+
+/*Animacion para girar imagen
+@keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}}
+@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}}
+#imgr{
+
+    -webkit-animation: 3s rotate linear infinite;
+    animation: 3s rotate linear infinite;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+
+*/
+
+.tabla{
+  display: grid;
+  width: 690px;
+  grid-template-columns: 25% 25% 25% 25% ;
+  border: 4px solid maroon;
+  background-color: salmon;
+  margin-top: 30px;
+  padding: 15px 20px;
+  border-radius: 60px;
+}
+
+.container-imgs{
+    width: 130px;
+    height: 130px;
+    margin: 5px;
+    padding: 5px;
+    background-color: maroon;
+    border-radius: 150px;
+}
+
+img{
 	background-size: cover;
 }
 
-.mostrar{
-	display: inline;
+.oculto{
+	visibility: hidden;
+}
+
+.visible{
+	visibility: visible;
+}
+
+body{
+	background-image: url("../img/free.jpg");
+	background-size: cover;
 }

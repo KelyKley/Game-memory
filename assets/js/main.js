@@ -1,54 +1,67 @@
 
 var tabla = document.getElementById('container-tabla');
-var img = ["assets/img/01.png", "assets/img/02.png", "assets/img/03.png", "assets/img/04.png","assets/img/01.png", "assets/img/02.png", "assets/img/03.png", "assets/img/04.png"];
+var image = ["assets/img/01.png",
+			 "assets/img/02.png", 
+			 "assets/img/03.png", 
+			 "assets/img/04.png",
+			 "assets/img/05.png", 
+			 "assets/img/06.png", 
+			 "assets/img/01.png", 
+			 "assets/img/02.png",
+			 "assets/img/03.png", 
+			 "assets/img/04.png", 
+			 "assets/img/05.png", 
+			 "assets/img/06.png",
+			 "assets/img/07.png",
+			 "assets/img/08.png",
+			 "assets/img/08.png",
+			 "assets/img/07.png"
+			 ];
 
-var create_table = document.createElement("TABLE");
-create_table.setAttribute("id", "tabla");
+var create_table = document.createElement("DIV");
+create_table.setAttribute("class", "tabla");
 tabla.appendChild(create_table);
 
-for (var i = 0; i < img.length; i++) {
+for (var i = 0; i < image.length; i++) {
 
-	var tr = document.createElement("TR");
-	var td = document.createElement("TD");
+	var td = document.createElement("DIV");
+	td.setAttribute("class", "container-imgs")
 	var imgs = document.createElement("IMG");
-	imgs.setAttribute("src", img[i]);
-	td.appendChild(imgs); //cada imagen se guarda dentro de un TD y todos estos en un solo TR.
-
-	var div = document.createElement("DIV");
-	div.setAttribute("id", "capa");
-	var capa = document.createElement("IMG"); //agrego una imagen 
-	capa.setAttribute("src", "assets/img/29.png")
-	capa.setAttribute("onclick", "mostrar(this);");
-	div.appendChild(capa);
-	td.appendChild(div);
-
-	tr.appendChild(td);
+	imgs.setAttribute("id", "imagenes"+i);
+	imgs.setAttribute("class","oculto");
+	imgs.setAttribute("src", image[i]);
+	td.appendChild(imgs); 
 
 	create_table.appendChild(td);
 	tabla.appendChild(create_table);
 }
 
+var first_image;
+var image_id;
+var clicks = 0; // contador de clicks
 
-var src =[];
-function mostrar(e){
-	var parent =e.parentNode;
-	parent.removeAttribute("class");
-	parent.setAttribute("class", "oculto");
+var tabla = document.getElementsByClassName("tabla")[0]; //Llama el div contenedor primer clase.
+tabla.addEventListener("click", (e)=>{  //funcion arrow -  sintaxis más corta
+	var img = e.target.children[0]; //target devuelve elemento, primer hijo
+  	var image_id2 = img.id; //devuelve el id de la imagen
 
-	src.push((parent.parentNode).firstChild.src);
+	if(img.nodeName == "IMG"){ // devuelve el nombre del elemento
+    	img.className = "visible"; //le la clase para que la imagen oculta sea visible
+    	clicks++;
 
-	console.log((parent.parentNode).firstChild.src);
-	console.log(src);
-
-	if(src.length == 2){
-		if(src[0] == src[1]){
-			console.log("hello");
-			src = [];
-		} else {
-			src = [];
-			parent.removeAttribute("class");
-		}
-	}
-	
-}
-
+    if(clicks == 1){
+    	first_image = img.src; //devuelve la ruta de la imagen
+    	image_id = img.id; //devuelve el id de la imagen del siguente click
+    }else if(clicks == 2) { // en el segundo click evaluara si sus rutas son iguales
+      if(first_image == img.src){
+        console.log("Son tarjetas iguales :)");
+      } else {
+        setTimeout(function(){ //si no son iguales las ocultara otra vez.
+          $( "#" + image_id).removeAttr("class").attr("class", "oculto");
+          $( "#" + image_id2).removeAttr("class").attr("class", "oculto");
+        }, 500)
+      }
+      clicks = 0; //el contador de clicks reiniciara
+    }
+  }
+});
