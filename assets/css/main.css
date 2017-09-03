@@ -18,22 +18,6 @@ section{
 	margin: 20px;
 }
 
-
-/*Animacion para girar imagen
-@keyframes rotate {from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}}
-@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
-  to {-webkit-transform: rotate(360deg);}}
-#imgr{
-
-    -webkit-animation: 3s rotate linear infinite;
-    animation: 3s rotate linear infinite;
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-}
-
-*/
-
 .tabla{
   display: grid;
   width: 690px;
@@ -45,13 +29,23 @@ section{
   border-radius: 60px;
 }
 
+@keyframes rotate {from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}}
+@-webkit-keyframes rotate {from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}}
+
 .container-imgs{
     width: 130px;
     height: 130px;
     margin: 5px;
     padding: 5px;
-    background-color: maroon;
+    background-image: url(../img/29.png);
+    -webkit-animation: 3s rotate linear infinite;
+    animation: 3s rotate linear infinite;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
     border-radius: 150px;
+    border: 3px solid maroon;
 }
 
 img{

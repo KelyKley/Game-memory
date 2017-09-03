@@ -24,20 +24,20 @@ tabla.appendChild(create_table);
 
 for (var i = 0; i < image.length; i++) {
 
-	var td = document.createElement("DIV");
-	td.setAttribute("class", "container-imgs")
-	var imgs = document.createElement("IMG");
-	imgs.setAttribute("id", "imagenes"+i);
-	imgs.setAttribute("class","oculto");
+	var div = document.createElement("DIV");//Creo un div q contenera las imagenes
+	div.setAttribute("class", "container-imgs")
+	var imgs = document.createElement("IMG");//creo element imagen
+	imgs.setAttribute("id", "imagenes"+i); 
+	imgs.setAttribute("class","oculto"); //Creamos una clase oculto
 	imgs.setAttribute("src", image[i]);
-	td.appendChild(imgs); 
+	div.appendChild(imgs); 
 
-	create_table.appendChild(td);
+	create_table.appendChild(div);
 	tabla.appendChild(create_table);
 }
 
-var first_image;
-var image_id;
+var first_image;//evalua imagen 
+var image_id; //contenedor de ids
 var clicks = 0; // contador de clicks
 
 var tabla = document.getElementsByClassName("tabla")[0]; //Llama el div contenedor primer clase.
@@ -53,9 +53,22 @@ tabla.addEventListener("click", (e)=>{  //funcion arrow -  sintaxis más corta
     	first_image = img.src; //devuelve la ruta de la imagen
     	image_id = img.id; //devuelve el id de la imagen del siguente click
     }else if(clicks == 2) { // en el segundo click evaluara si sus rutas son iguales
-      if(first_image == img.src){
-        console.log("Son tarjetas iguales :)");
+      if(first_image == img.src){//Evalua si las rutas son iguales
+        swal({
+			title: "Estupendo!",
+		 	text: "Tu memoria es increible! :)",
+		  	timer: 1000,
+		  	showConfirmButton: false,
+		  	imageUrl: img.src
+		});
       } else {
+      	    swal({
+			title: "FATAL!",
+		 	text: "Sigue ejercitandote :(",
+		  	timer: 800,
+		  	showConfirmButton: false,
+		  	imageUrl: "assets/img/94.png"
+		});
         setTimeout(function(){ //si no son iguales las ocultara otra vez.
           $( "#" + image_id).removeAttr("class").attr("class", "oculto");
           $( "#" + image_id2).removeAttr("class").attr("class", "oculto");
